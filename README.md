@@ -1,6 +1,6 @@
 # todo
 
-A new Flutter project.
+Simple to do flutter app
 
 ## Getting Started
 
