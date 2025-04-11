@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo/utils/todo_list.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
@@ -11,6 +12,7 @@ class HomeScreen extends StatelessWidget {
     ['Do Laundry', false],
     ['Go Shopping', false],
     ['Music Practice', false],
+    ['Fix bugs', false],
   ];
 
   @override
@@ -29,20 +31,12 @@ class HomeScreen extends StatelessWidget {
       body: ListView.builder(
         itemCount: todos.length,
         itemBuilder: (BuildContext context, index) {
-          return Padding(
-            padding: const EdgeInsets.all(20),
-            child: Container(
-              padding: EdgeInsets.all(10),
-              color: Colors.blueAccent,
-              child: Text(
-                todos[index][0],
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-            ),
+          return TodoList(
+            taskName: todos[index][0],
+            taskCompleted: todos[index][1],
+            onChanged: (value) {
+              todos[index][1] = value;
+            },
           );
         },
       ),
