@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:todo/utils/todo_list.dart';
 
-class HomeScreen extends StatelessWidget {
-  HomeScreen({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   List todos = [
     ['Daily Workout', false],
     ['NIDA Project', false],
@@ -14,6 +19,12 @@ class HomeScreen extends StatelessWidget {
     ['Music Practice', false],
     ['Fix bugs', false],
   ];
+
+  void checkBoxChanged(int index) {
+    setState(() {
+      todos[index][1] = !todos[index][1];
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,9 +45,7 @@ class HomeScreen extends StatelessWidget {
           return TodoList(
             taskName: todos[index][0],
             taskCompleted: todos[index][1],
-            onChanged: (value) {
-              todos[index][1] = value;
-            },
+            onChanged: (value) => checkBoxChanged(index),
           );
         },
       ),
