@@ -11,7 +11,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   List todos = [
     ['Daily Workout', false],
-    ['NIDA Project', false],
+    ['Flutter Project', false],
     ['Plan the Day', false],
     ['Clean the House', false],
     ['Do Laundry', false],
