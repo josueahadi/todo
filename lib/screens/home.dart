@@ -9,6 +9,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final _controller = TextEditingController();
+
   List todos = [
     ['Daily Workout', false],
     ['Flutter Project', false],
@@ -23,6 +25,18 @@ class _HomeScreenState extends State<HomeScreen> {
   void checkBoxChanged(int index) {
     setState(() {
       todos[index][1] = !todos[index][1];
+    });
+  }
+
+  void addTask(String task) {
+    setState(() {
+      todos.add([task, false]);
+    });
+  }
+
+  void deleteTask(int index) {
+    setState(() {
+      todos.removeAt(index);
     });
   }
 
@@ -53,8 +67,9 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.only(left: 32, right: 10),
+              padding: const EdgeInsets.only(left: 30, right: 10),
               child: TextField(
+                controller: _controller,
                 decoration: InputDecoration(
                   filled: true,
                   fillColor: Colors.white,
@@ -76,7 +91,12 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           FloatingActionButton(
-            onPressed: () {},
+            onPressed: () {
+              if (_controller.text.isNotEmpty) {
+                addTask(_controller.text);
+                _controller.clear();
+              }
+            },
             backgroundColor: Colors.white,
             foregroundColor: Colors.black,
             child: const Icon(Icons.add),
