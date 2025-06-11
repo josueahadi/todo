@@ -7,7 +7,7 @@ class TodoList extends StatelessWidget {
     required this.taskName,
     required this.taskCompleted,
     required this.onChanged,
-    this.deleteFunction,
+    required this.deleteFunction,
   });
 
   final String taskName;
@@ -23,7 +23,13 @@ class TodoList extends StatelessWidget {
         endActionPane: ActionPane(
           motion: StretchMotion(),
           children: [
-            SlidableAction(onPressed: deleteFunction, icon: Icons.delete),
+            SlidableAction(
+              onPressed: deleteFunction,
+              icon: Icons.delete,
+              borderRadius: BorderRadius.circular(15),
+              backgroundColor: Colors.white,
+              foregroundColor: Colors.red,
+            ),
           ],
         ),
         child: Container(
