@@ -12,12 +12,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final _controller = TextEditingController();
 
   List todos = [
-    ['Daily Workout', false],
-    ['Flutter Project', false],
     ['Plan the Day', false],
-    ['Clean the House', false],
-    ['Do Laundry', false],
-    ['Go Shopping', false],
     ['Music Practice', false],
     ['Fix bugs', false],
   ];
